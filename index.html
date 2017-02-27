@@ -5,9 +5,52 @@
 		<script type="text/javascript" src="app.js"></script>
 	</head>
 	<body ng-app="Cars">
+		
 		<div ng-controller="carsCtrl">
-	      <ul>
-	      	<li ng-repeat = "car in cars track by $index"> {{car.name}} </li>
+			 <div >
+    <p>Sort Type: {{ sortType }}</p>
+    <p>Sort Reverse: {{ sortReverse }}</p>
+    <p>Search Query: {{ searchByTerm }}</p>
+  </div>
+			<table>
+				<thead>
+					<tr>
+						<td>
+							<a href="#" ng-click="sortType = 'name'">
+								Name
+							</a>
+						</td>
+						<td>
+							<a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+								Model
+							</a>
+						</td>
+						<td> 
+							<a href="#" ng-click="sortType = 'engine'; sortReverse = !sortReverse">
+								Engine
+							</a> 
+						</td>
+						<td> 
+							<a href="#" ng-click="sortType = 'color'; sortReverse = !sortReverse">
+								Color
+							</a>
+						</td>
+						<td>
+							<a href="#" ng-click="sortType = 'mileage'; sortReverse = !sortReverse">
+								Mileage
+							</a>
+						</td>
+					</tr>
+				</thead>
+
+				<tr ng-repeat = "car in cars | orderBy:sortType:sortReverse"> 
+					<td> {{car.name}} </td>
+					<td> {{car.model}} </td>
+					<td> {{car.engine}} </td>
+					<td> {{car.color}} </td>
+					<td> {{car.mileage}} </td>
+				</tr>
+			</table>
 	    </div>
 	</body>
 </html>
