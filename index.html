@@ -7,11 +7,11 @@
 	<body ng-app="Cars">
 		
 		<div ng-controller="carsCtrl">
-			 <div >
-    <p>Sort Type: {{ sortType }}</p>
-    <p>Sort Reverse: {{ sortReverse }}</p>
-    <p>Search Query: {{ searchByTerm }}</p>
-  </div>
+			<div >
+    			<p>
+    				Search Query: <input type="text" class="form-control" placeholder="Search the cars" ng-model="searchByTerm"> 
+    			</p>
+  			</div>
 			<table>
 				<thead>
 					<tr>
@@ -43,7 +43,7 @@
 					</tr>
 				</thead>
 
-				<tr ng-repeat = "car in cars | orderBy:sortType:sortReverse"> 
+				<tr ng-repeat = "car in cars | orderBy:sortType:sortReverse | filter:searchByTerm"> 
 					<td> {{car.name}} </td>
 					<td> {{car.model}} </td>
 					<td> {{car.engine}} </td>
