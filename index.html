@@ -7,21 +7,17 @@
 	<body ng-app="Cars">
 		
 		<div ng-controller="carsCtrl">
-			<div >
-    			<p>
-    				Search Query: <input type="text" class="form-control" placeholder="Search the cars" ng-model="searchByTerm"> 
-    			</p>
-  			</div>
+
 			<table>
 				<thead>
 					<tr>
 						<td>
-							<a href="#" ng-click="sortType = 'name'">
+							<a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
 								Name
 							</a>
 						</td>
 						<td>
-							<a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+							<a href="#" ng-click="sortType = 'model'; sortReverse = !sortReverse">
 								Model
 							</a>
 						</td>
@@ -41,9 +37,16 @@
 							</a>
 						</td>
 					</tr>
+					<tr>   
+						<td> <input type="text" ng-model="search.name" /> </td>  
+						<td> <input type="text" ng-model="search.model" /> </td>  
+						<td> <input type="text" ng-model="search.engine" /> </td>
+						<td> <input type="text" ng-model="search.color" /> </td>  
+						<td> <input type="text" ng-model="search.mileage" /> </td>    
+			        </tr>  
 				</thead>
 
-				<tr ng-repeat = "car in cars | orderBy:sortType:sortReverse | filter:searchByTerm"> 
+				<tr ng-repeat = "car in cars | orderBy:sortType:sortReverse | filter:search"> 
 					<td> {{car.name}} </td>
 					<td> {{car.model}} </td>
 					<td> {{car.engine}} </td>
