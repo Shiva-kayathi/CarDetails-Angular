@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title> Cars Details</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+	</head>
+	<body ng-app="Cars">
+		<div ng-controller="carsCtrl">
+	      <ul>
+	      	<li ng-repeat = "car in cars track by $index"> {{car.name}} </li>
+	    </div>
+	</body>
+</html>
