@@ -1,39 +1,51 @@
 <html>
 	<head>
 		<title> Cars Details</title>
+		<!-- CSS -->
+    	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+    	<!-- JavaScript -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
 		<script type="text/javascript" src="app.js"></script>
 	</head>
-	<body ng-app="Cars">
-		
+	<body ng-app="cars">
 		<div ng-controller="carsCtrl">
-
 			<table>
 				<thead>
 					<tr>
 						<td>
 							<a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
 								Name
+								<span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+        						<span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
 							</a>
 						</td>
 						<td>
 							<a href="#" ng-click="sortType = 'model'; sortReverse = !sortReverse">
 								Model
+								<span ng-show="sortType == 'model' && !sortReverse" class="fa fa-caret-down"></span>
+        						<span ng-show="sortType == 'model' && sortReverse" class="fa fa-caret-up"></span>
 							</a>
 						</td>
 						<td> 
 							<a href="#" ng-click="sortType = 'engine'; sortReverse = !sortReverse">
 								Engine
+								<span ng-show="sortType == 'engine' && !sortReverse" class="fa fa-caret-down"></span>
+        						<span ng-show="sortType == 'engine' && sortReverse" class="fa fa-caret-up"></span>
 							</a> 
 						</td>
 						<td> 
 							<a href="#" ng-click="sortType = 'color'; sortReverse = !sortReverse">
 								Color
+								<span ng-show="sortType == 'color' && !sortReverse" class="fa fa-caret-down"></span>
+        						<span ng-show="sortType == 'color' && sortReverse" class="fa fa-caret-up"></span>
 							</a>
 						</td>
 						<td>
 							<a href="#" ng-click="sortType = 'mileage'; sortReverse = !sortReverse">
 								Mileage
+								<span ng-show="sortType == 'mileage' && !sortReverse" class="fa fa-caret-down"></span>
+        						<span ng-show="sortType == 'mileage' && sortReverse" class="fa fa-caret-up"></span>
 							</a>
 						</td>
 					</tr>
