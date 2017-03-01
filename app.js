@@ -7,16 +7,19 @@ app.controller(
 		$scope.sortType     = 'name'; // set the default sort type
   		$scope.sortReverse  = false;  // set the default sort order
   		$scope.searchByTerm   = '';     // set the default search/filter term
+  		$scope.cars = new Array();
 
 		$http.get("https://mobiledev.sunovacu.ca/api/Values/GetCars").then(
 			function (response)
 			{
 	      	    var carDetails = response.data;
-	      		
-	      		$scope.cars = new Car(carDetails);
-	      		console.log($scope.cars);
-	        
-	      		
+	      		angular.forEach(carDetails, 
+	      			function(carDetail)
+		      		{
+		      			var car = new Car(carDetail.name, carDetail.model, carDetail.engine, carDetail.color, carDetail.mileage);
+		      			$scope.cars.push(car);
+		      		}
+		      	);
   			}
   		);
 
@@ -33,9 +36,13 @@ app.factory('Car', [
 		/**
 	     * Constructor, with class name
 	     */
-		function Car(carData)
+		function Car(name, model, engine, color, mileage)
 		{
-			this.setData(carData);
+			this.name = name;
+			this.model = model;
+			this.engine = engine;
+			this.color = color;
+			this.mileage = mileage;
 		};
 
 		Car.prototype = {
